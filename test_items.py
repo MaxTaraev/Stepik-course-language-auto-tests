@@ -13,13 +13,21 @@ link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
 
 def test_does_item_have_add_to_cart_button(browser):
 
+    # На всякий случай
     browser.implicitly_wait(10)
 
+    # Открыть страницу товара
     browser.get(link)
 
+    # Пауза чтобы проверить текст в кнопке
+    time.sleep(10)
+
+    # Найти кнопку добавления в карзину с помощью elements, который возвращает массив
+    # (будет пустой массив если элементы не были найдены)
     add_to_cart_button = browser.find_elements(
         By.CSS_SELECTOR, 'button.btn-add-to-basket[type="submit"]')
 
+    # Проверить найдена ли кнопка
     assert len(
         add_to_cart_button) is not 0, 'Кнопка добавления в корзину не найдена'
 

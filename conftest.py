@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.options import Options as OptionsFirefox
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default=None,
                      help="Choose browser: chrome or firefox")
-    parser.addoption('--language', action='store', default=None,
+    parser.addoption('--language', action='store', default='en',
                      help="Choose language to test")
 
 
@@ -19,23 +19,23 @@ def browser(request):
     browser = None
 
     # Получить язык браузера из команды терминала
-    site_language = request.confing.getoption("language")
+    user_language = request.config.getoption("language")
 
     # Установить полученный язык для Chrome
     options = Options()
     options.add_experimental_option(
-        'prefs', {'intl.accept_languages': site_language})
+        'prefs', {'intl.accept_languages': user_language})
 
     # Установить полученный язык для FireFox
     options_firefox = OptionsFirefox()
-    options_firefox.set_preference("intl.accept_languages", site_language)
+    options_firefox.set_preference("intl.accept_languages", user_language)
 
     if browser_name == "chrome":
-        print("\nstart chrome browser for test..")
+        print("\nstart chrome browser for test...")
         browser = webdriver.Chrome(options=options)
 
     elif browser_name == "firefox":
-        print("\nstart firefox browser for test..")
+        print("\nstart firefox browser for test...")
         browser = webdriver.Firefox(options=options_firefox)
 
     else:
@@ -43,5 +43,5 @@ def browser(request):
 
     yield browser
 
-    print("\nquit browser..")
+    print("\nquit browser...")
     browser.quit()
