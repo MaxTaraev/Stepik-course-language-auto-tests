@@ -5,13 +5,13 @@ from selenium.webdriver.firefox.options import Options as OptionsFirefox
 
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', action='store', default=None,
+    parser.addoption('--browser_name', action='store', default='chrome',
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default='en',
                      help="Choose language to test")
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope='function')
 def browser(request):
 
     # Получить название браузера из команды терминала

@@ -25,10 +25,10 @@ def test_does_item_have_add_to_cart_button(browser):
     # Найти кнопку добавления в карзину с помощью elements, который возвращает массив
     # (будет пустой массив если элементы не были найдены)
     add_to_cart_button = browser.find_elements(
-        By.CSS_SELECTOR, 'button.btn-add-to-basket[type="submit"]')
+        By.CSS_SELECTOR, 'button.btn-add-to-basket')
 
     # Проверить найдена ли кнопка
     assert len(
-        add_to_cart_button) is not 0, 'Кнопка добавления в корзину не найдена'
+        add_to_cart_button) is not 0, 'Кнопка добавления в карзину не найдена'
 
     pass
