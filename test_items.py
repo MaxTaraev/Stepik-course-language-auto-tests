@@ -8,7 +8,7 @@ import os
 import time
 import math
 
-link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+test_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
 
 
 def test_does_item_have_add_to_cart_button(browser):
@@ -17,7 +17,7 @@ def test_does_item_have_add_to_cart_button(browser):
     browser.implicitly_wait(10)
 
     # Открыть страницу товара
-    browser.get(link)
+    browser.get(test_link)
 
     # Пауза чтобы проверить текст в кнопке
     time.sleep(10)
